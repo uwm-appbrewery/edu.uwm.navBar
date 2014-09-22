@@ -1,0 +1,13 @@
+{
+	"id": "edu.uwm.navBar",
+	"name": "edu.uwm.navBar",
+	"description": "A navigation bar with a variety of options.",
+	"author": "Joel Herron",
+	"version": "0.1",
+	"copyright": "Copyright 2014 ",
+	"license": "Apache 2.0",
+	"min-alloy-version": "1.4",
+	"min-titanium-version": "3.2",
+	"tags": "",
+	"platforms": "android,ios"
+}

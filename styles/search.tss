@@ -1,0 +1,17 @@
+"#searchBox": {
+  layout: "horizontal",
+  width: Ti.UI.SIZE
+},
+"#q": {
+  top:  "30dp",
+	bottom: "10dp",
+  width: "175dp",
+	color: "#111",
+	borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+},
+"#searchButton": {
+	top: "30dp",
+	bottom: "10dp",
+	height: "26dp",
+	backgroundColor: "transparent"
+}

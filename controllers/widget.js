@@ -17,6 +17,29 @@ var handlers = {};
 var theme;
 var deviceVersion = parseInt(Titanium.Platform.version.split(".")[0], 10);
 
+
+/**
+ * handler function to interact with originating contoller
+ * @param {MIXED} _args handler functions
+ */
+exports.setHandlers = function(_args) {
+	_.each(HANDLERS, function(_h) {
+				if (_args[_h]) {
+						handlers[_h] = _args[_h];
+				}
+		});
+};
+
+/**
+* callback function to handle search
+* @param {STRING} query the search query
+*/
+function handleSearch (query) {
+	// pass serach query back to orginating controller
+	handlers.search(query);
+}
+
+
 if(CONFIG.image) {
 	var image = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, CONFIG.image);
 
@@ -34,17 +57,11 @@ if(CONFIG.image) {
 	}
 } else if(CONFIG.search) {
 	// add search bar
-	$.title = Ti.UI.createView();
-	var search = Ti.UI.createTextField({
-		top: "6dp",
-		bottom: "6dp",
-		left: "7dp",
-		right: "60dp",
-		color: "#111",
-		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-		hintText: "search"
-	});
-	
+	$.title = Alloy.createWidget('edu.uwm.navBar', 'search', {
+		callback: handleSearch,
+		hint: (CONFIG.searchHint) ? CONFIG.searchHint : "search"
+	}).getView();
+
 } else {
 	$.title = Ti.UI.createLabel({
 		top: (OS_IOS && deviceVersion >= 7) ? "20dp" : "0dp",
@@ -82,6 +99,11 @@ $.setBackgroundColor = function(_color) {
  */
 $.setTitle = function(_text) {
 	$.title.text = _text;
+};
+
+
+$.blurTitle = function() {
+	$.title.blurSearch();
 };
 
 /**
@@ -187,13 +209,7 @@ $.showAction = function(_callback) {
 };
 
 
-exports.setHandlers = function(_args) {
-	_.each(HANDLERS, function(_h) {
-        if (_args[_h]) {
-            handlers[_h] = _args[_h];
-        }
-    });
-};
+
 
 
 /**

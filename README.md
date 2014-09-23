@@ -25,19 +25,20 @@ Example Usage
 
 Options
 -------
-Parameter | Type      | Default |
-----------|-----------|---------|
-image     | `String`  | null    |
-text      | `String`  | null    |
-search    | `Boolean` | null    |
+Parameter  | Type      | Default |
+-----------|-----------|---------|
+image      | `String`  | null    |
+text       | `String`  | null    |
+search     | `Boolean` | null    |
+searchHint | `String`  | null    |
 
 Methods
 -------
 Function           | Parameters   | Description
 -------------------|--------------|------------
-setSearch          | `Object`     | `callback`: Return callback, `text`: search hint text
 setBackgroundColor | `String`     | Background color
 setTitle           | `String`     | Title bar text
+blurTitle          | `Function`   | Click callback
 showLeft           | `Object`     | `callback`: Click callback, `image`: Image to add
 showRight          | `Object`     | `callback`: Click callback, `image`: Image to add
 showBack           | `Function`   | Click callback
@@ -48,6 +49,8 @@ showAction         | `Function`   | Click callback
 
 Changelog
 ---------
+* 0.2
+	* Added search bar
 * 0.1
 	* Initial commit; forked from [ChariTi](https://github.com/mcongrove/com.mcongrove.NavigationBar)
 
@@ -71,4 +74,4 @@ limitations under the License.
 edu.uwm.navBar
 ==============
 
-An Alloy Navbar with optional searchbar 
+An Alloy Navbar with optional searchbar
